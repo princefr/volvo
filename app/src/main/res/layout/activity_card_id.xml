@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vallyse.test.volvo.cardID">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_margin="7dp"
+                android:layout_marginLeft="9dp"
+                android:layout_alignParentLeft="true"
+                android:text="Vérification d'identité"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:fontFamily="@font/titillium"
+
+                />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.cameraview.CameraView
+                android:id="@+id/camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:keepScreenOn="true"
+                android:adjustViewBounds="true"
+                app:autoFocus="true"
+                app:aspectRatio="4:3"
+                app:facing="back"
+                app:flash="auto"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="0px"
+                    android:id="@+id/view_camera_dark0"
+                    android:layout_height="match_parent"
+                    android:background="#8A000000"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/view_camera_dark1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80px"
+                        android:background="#8A000000"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:text="Prenez en photo votre carte d'identité"
+                        android:fontFamily="@font/titillium"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_camera_hint"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0px"
+                        android:layout_weight="1">
+
+                        <View
+                            android:layout_width="16px"
+                            android:layout_height="110px"
+                            android:layout_gravity="top|left"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="16px"
+                            android:layout_height="110px"
+                            android:layout_gravity="top|right"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="16px"
+                            android:layout_height="110px"
+                            android:layout_gravity="bottom|left"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="16px"
+                            android:layout_height="110px"
+                            android:layout_gravity="bottom|right"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="110px"
+                            android:layout_height="16px"
+                            android:layout_gravity="top|left"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="110px"
+                            android:layout_height="16px"
+                            android:layout_gravity="top|right"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="110px"
+                            android:layout_height="16px"
+                            android:layout_gravity="bottom|left"
+                            android:background="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="110px"
+                            android:layout_height="16px"
+                            android:layout_gravity="bottom|right"
+                            android:background="@color/colorPrimary" />
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="250px"
+                        android:background="#8A000000"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="52px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#8A000000"/>
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="bottom|left"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/pictureidone"
+            />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            />
+    </LinearLayout>
+
+
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/takepicture"
+        android:background="@drawable/button_bg_round"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_photo_camera"
+        android:gravity="center"/>
+
+
+
+
+    <com.github.jorgecastilloprz.FABProgressCircle
+        android:id="@+id/fabProgressCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:arcColor="#0F9398"
+        android:layout_gravity="bottom|end">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/ic_right_arrow_forward" />
+
+    </com.github.jorgecastilloprz.FABProgressCircle>
+
+</FrameLayout>

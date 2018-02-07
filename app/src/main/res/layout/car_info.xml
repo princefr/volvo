@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bike_info_board"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/gray_button_background"/>
+
+        <TextView
+            android:id="@+id/tv_location_info"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:text="Prince merveil"/>
+
+
+        <TextView
+            android:id="@+id/tv_date_info"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="5dp"
+            android:textAlignment="gravity"
+            android:textColor="@color/red"
+            android:fontFamily="@font/titillium"
+            android:gravity="right|center"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:text="10 JAN - 15 OCT"/>
+
+    </LinearLayout>
+
+
+    <include layout="@layout/divider"/>
+
+
+
+    <!--<include layout="@layout/board_unlock"/>-->
+
+    <LinearLayout
+        android:id="@+id/id_lo_bike_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_prices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5/5"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                style="?android:attr/ratingBarStyleSmall"
+                android:stepSize="0.1"
+                android:rating="4"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/tv_distance1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium"
+                android:text="Volvo XC90"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/xc40_side"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_loginOrorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"
+        android:paddingRight="8dp"
+        android:text="Emprunter"
+        android:textColor="#ffffff"/>
+
+</LinearLayout>

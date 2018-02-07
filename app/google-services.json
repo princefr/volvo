@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "325549058107",
+    "firebase_url": "https://volvo-fe7a6.firebaseio.com",
+    "project_id": "volvo-fe7a6",
+    "storage_bucket": "volvo-fe7a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325549058107:android:416edb4b1b2f5ac5",
+        "android_client_info": {
+          "package_name": "com.vallyse.test.volvo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325549058107-vge9u54smt1b9sgbipjj5qsul1idv6lo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vallyse.test.volvo",
+            "certificate_hash": "e848238667885102e5b762bd858337630621386f"
+          }
+        },
+        {
+          "client_id": "325549058107-n2j0edg53crbip4eolb30qj4r1e82vmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT03z006knh9EfkwZ4zTbZBoBKaL5IMKc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325549058107-n2j0edg53crbip4eolb30qj4r1e82vmt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

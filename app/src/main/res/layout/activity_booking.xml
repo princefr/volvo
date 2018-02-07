@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/framebooking"
+    tools:context="com.vallyse.test.volvo.booking">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            app:title="Réserver un essai"
+            android:minHeight="50dp"
+            app:titleTextColor="@color/white"
+            android:id="@+id/toolbar">
+
+        </android.support.v7.widget.Toolbar>
+
+        <com.savvi.rangedatepicker.CalendarPickerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:clipToPadding="false"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="Adresse de livraison de la voiture"
+            android:fontFamily="@font/titillium"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/livraisonadress"
+            android:background="#F2F2F2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:id="@+id/lieu"
+                android:padding="10dip"
+                android:textSize="14sp"
+                android:hint="Choisissez une adresse de livraison "/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="Crénaux horaire"
+            android:fontFamily="@font/titillium"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="#F2F2F2"
+            android:id="@+id/crenauxhoraire"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:id="@+id/crenautext"
+                android:padding="10dip"
+                android:textSize="14sp"
+                android:hint="Choisissez un crénaux horaire"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <com.github.jorgecastilloprz.FABProgressCircle
+        android:id="@+id/fabProgressCirclebooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:arcColor="#0F9398"
+        android:layout_gravity="bottom|end">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/ic_right_arrow_forward" />
+
+    </com.github.jorgecastilloprz.FABProgressCircle>
+
+</FrameLayout>

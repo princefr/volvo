@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Vexperience</string>
+    <string name="resend_identify_code">Renvoyez le code</string>
+
+
+    <string name="cancel_book">Arreter</string>
+    <string name="cancel_book_toast">Le test est arreté</string>
+    <string name="unlock">Déverouiller</string>
+    <string name="unlock_auto">Déverouillerage automatique</string>
+    <string name="bike_code">Code du vélo</string>
+    <string name="book_countdown">Compte à rebours</string>
+    <string name="bike_sound">Son</string>
+    <string name="facebook_app_id">2067520806828711</string>
+    <string name="fb_login_protocol_scheme">fb2067520806828711</string>
+
+</resources>

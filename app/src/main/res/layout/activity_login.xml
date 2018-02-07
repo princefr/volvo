@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/toolbar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/title"
+        android:layout_below="@id/toolbar_login"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@drawable/volvo"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/titillium"
+            android:textAlignment="center"
+            android:text="Bienvenue sur l'application vExperience"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Pour vous connecter suffit de cliquer l'a dessus"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
+            android:layout_weight="1">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_query"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:text="connect_with_facebook"/>
+
+
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="En appuyant sur continuer avec facebook, vous acceptez"/>
+
+            <TextView
+                android:id="@+id/login_services"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《les condictions de service Vexperience》"
+                android:textColor="#FF0000"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

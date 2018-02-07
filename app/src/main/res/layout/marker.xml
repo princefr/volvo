@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="100dp"
+    android:layout_height="70dp"
+    android:orientation="vertical"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_car"
+        android:elevation="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawablePadding="5dp"
+        android:fontFamily="@font/titillium"
+        android:textColorHighlight="@color/white"
+        android:shadowColor="@color/white"
+        android:text="Xc-60"
+        android:textColor="@color/colorPrimary"
+        android:elevation="5dp"/>
+
+</LinearLayout>

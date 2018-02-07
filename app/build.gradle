@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.0'
+    defaultConfig {
+        applicationId "com.vallyse.test.volvo"
+        multiDexEnabled true
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+}
+
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+
+    }
+}
+
+
+
+
+
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.google.maps.android:android-maps-utils:0.4+'
+    implementation 'com.google.android.gms:play-services-location:11.0.4'
+    implementation 'com.google.android.gms:play-services-places:11.0.4'
+    implementation 'com.google.firebase:firebase-auth:11.0.4'
+    implementation 'com.google.firebase:firebase-database:11.0.4'
+    implementation 'com.google.firebase:firebase-crash:11.0.4'
+    implementation 'pub.devrel:easypermissions:1.0.1'
+    implementation 'com.google.firebase:firebase-invites:11.0.4'
+    implementation 'com.google.firebase:firebase-storage:11.0.4'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:design:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.github.jorgecastilloprz:fabprogresscircle:1.01@aar'
+    compile 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    compile 'com.savvi.datepicker:rangepicker:1.0.1'
+
+    compile 'com.github.google:cameraview:9bbe07ba44'
+
+
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.3.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.8.0'
+    compile('com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.8.0') {
+        transitive = true
+    }
+
+    compile 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-traffic:0.3.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.3.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-building:0.1.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-geojson:0.1.0'
+    compile 'com.mapbox.mapboxsdk:mapbox-android-services:2.2.9'
+
+
+    compile 'com.firebase:geofire-android:2.2.0'
+    compile 'com.android.volley:volley:1.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.thomper:sweet-alert-dialog:v1.4.0'
+
+    compile 'com.facebook.android:facebook-login:4.30.0'
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+apply plugin: 'com.google.gms.google-services'

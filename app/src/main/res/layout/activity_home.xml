@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vallyse.test.volvo.home">
+
+
+
+    <com.vallyse.test.volvo.views.OfoMenuLayout
+        android:id="@+id/ofo_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_cancel"
+
+                 />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/menu_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp">
+
+            <com.vallyse.test.volvo.views.OfoContentLayout
+                android:id="@+id/ofo_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="100dp"
+                android:orientation="vertical"
+                android:paddingLeft="60dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/myinfos"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Mes informations"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/verification"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Rewards"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/livraison"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Mes prets"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/envoies"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Mes emprunts"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/moyensdepaiements"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Moyens de paiement"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/parametres"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Paramètres"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+            </com.vallyse.test.volvo.views.OfoContentLayout>
+
+        </FrameLayout>
+
+    </com.vallyse.test.volvo.views.OfoMenuLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_main"
+        xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageButton
+                android:id="@+id/rv_ic_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="9dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_user"
+                android:background="@null"/>
+
+
+
+
+
+
+
+            <ImageButton
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="9dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_search"
+                android:background="@null"/>
+
+
+
+
+        </RelativeLayout>
+
+        <include layout="@layout/car_info"/>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/framlayout">
+
+
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                mapbox:mapbox_cameraTargetLat="40.73581"
+                mapbox:mapbox_cameraTargetLng="-73.99155"
+                mapbox:mapbox_styleUrl="mapbox://styles/mapbox/streets-v10"
+                mapbox:mapbox_cameraZoom="10"
+                mapbox:mapbox_cameraZoomMax="12.41"
+                mapbox:mapbox_cameraZoomMin="6"
+
+                />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_gravity="bottom"
+                >
+
+
+
+                <ImageView
+                    android:id="@+id/dingwei"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:background="@drawable/circle_shape"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_own"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/information"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="8dp"
+                    android:elevation="2dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/circle_shape"
+                    android:clickable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_rent"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/refreshAll"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_above="@+id/dingwei"
+                    android:layout_alignParentRight="true"
+
+                    android:elevation="2dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/circle_shape"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/refresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        />
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:id="@+id/hongbao"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_above="@+id/information"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:elevation="2dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:src="@drawable/ic_share"
+                    android:scaleType="center"
+                    />
+
+                <com.skyfishjy.library.RippleBackground
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/content"
+                    app:rb_color="@color/colorPrimary"
+                    app:rb_radius="37dp"
+                    app:rb_rippleAmount="3"
+                    app:rb_duration="10000"
+                    app:rb_scale="2">
+                    <LinearLayout
+                        android:id="@+id/sharebutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="8dp"
+                        android:elevation="2dp"
+                        android:background="@drawable/scan_unlock_button"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="1dp"
+                            android:gravity="center"
+                            android:text="Try"
+                            android:fontFamily="@font/titillium"
+                            android:textColor="#ffffff"
+                            android:drawableTop="@drawable/ic_try" />
+                    </LinearLayout>
+
+                </com.skyfishjy.library.RippleBackground>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:visibility="invisible" />
+
+
+</RelativeLayout>
