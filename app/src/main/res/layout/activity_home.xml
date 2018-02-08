@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_loyout"
     tools:context="com.vallyse.test.volvo.home">
 
 
@@ -56,13 +57,14 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/ic_car_driver"
                          />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="Mes informations"
+                        android:text="Mes essais"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -77,13 +79,14 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/ic_car_inspection"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="Rewards"
+                        android:text="Mes réparations"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -100,6 +103,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/ic_buy_a_car"
                          />
 
                     <TextView
@@ -122,6 +126,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/ic_car_recycling"
                          />
 
                     <TextView
@@ -143,6 +148,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/ic_credit_cards"
                          />
 
                     <TextView
@@ -164,6 +170,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/ic_gear"
                          />
 
                     <TextView
@@ -237,7 +244,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/framlayout">
 
 

@@ -8,4 +8,8 @@
     <color name="bg">#F5F5F5</color>
     <color name="gray">#D9D9D9</color>
     <color name="red">#FF0000</color>
+
+    <color name="ln_colorPrimary">#003057</color>
+    <color name="ln_colorPrimaryDark">#003057</color>
+    <color name="ln_colorAccent">#003057</color>
 </resources>

@@ -35,6 +35,7 @@ public class Drivesharedcard extends AppCompatActivity {
     private  LinearLayout livraisonadress;
     static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 10;
     private TextView lieu;
+    private share.SharePublication publication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,9 @@ public class Drivesharedcard extends AppCompatActivity {
 
             }
         });
+
+        publication = (share.SharePublication) getIntent().getSerializableExtra("Publication");
+        Log.i("TAG", publication.addresse + " " + "in dirver shared card");
 
 
         final Calendar nextYear = Calendar.getInstance();

@@ -14,11 +14,13 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
 import android.location.Location;
 import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -36,6 +38,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,15 +73,21 @@ import com.mapbox.services.android.telemetry.location.LocationEngineListener;
 import com.mapbox.services.android.telemetry.location.LocationEnginePriority;
 import com.skyfishjy.library.RippleBackground;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+import com.vallyse.test.volvo.User.User;
 import com.vallyse.test.volvo.adaptater.travel_pager;
 import com.vallyse.test.volvo.views.OfoContentLayout;
 import com.vallyse.test.volvo.views.OfoMenuLayout;
 
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -107,6 +116,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
     private GeoFire geoFire;
     private GeoQuery geoQuery;
     private Map<String,Marker> markers;
+    private Map<String, share.SharePublication> markersExtra;
     private DatabaseReference Georef;
     private DatabaseReference publicationRef;
     private FrameLayout framlayout;
@@ -123,6 +133,20 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         return MenuBrawable.CONVEX;
     }
     private  Bitmap imageUrl;
+    private RelativeLayout main_loyout;
+    private share.SharePublication publication;
+    private share.SharePublication publicationToShow;
+    private MenuBrawable menuBrawable;
+    private LinearLayout moyensdepaiements;
+
+
+    private TextView tv_location_info;
+    private TextView tv_date_info;
+    private TextView tv_distance1;
+    private String publicationKey;
+
+
+    private LinearLayout parametres;
 
 
 
@@ -149,6 +173,32 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         framlayout = (FrameLayout) findViewById(R.id.framlayout);
 
 
+        main_loyout = (RelativeLayout) findViewById(R.id.main_loyout);
+        moyensdepaiements = (LinearLayout) findViewById(R.id.moyensdepaiements);
+
+
+
+
+        moyensdepaiements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(home.this, Paymentmethod.class));
+            }
+        });
+
+        parametres = (LinearLayout) findViewById(R.id.parametres);
+        parametres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(home.this, parametres.class));
+            }
+        });
+
+
+
+          tv_location_info = (TextView) findViewById(R.id.tv_location_info);
+          tv_date_info = (TextView) findViewById(R.id.tv_date_info);
+            tv_distance1 = (TextView) findViewById(R.id.tv_distance1);
 
 
 
@@ -160,6 +210,9 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         rv_ic_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(viewPager.getVisibility() == View.VISIBLE){
+                    viewPager.setVisibility(View.GONE);
+                }
                 layout_main.setVisibility(View.GONE);
                 ofoMenuLayout.setVisibility(View.VISIBLE);
                 ofoMenuLayout.open();
@@ -201,18 +254,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
 
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
-
-
-
-        //final MenuBrawable menuBrawable = new MenuBrawable(BitmapFactory.decodeResource(getResources(), getDrawableFromUrl(new URL(currentUser.getPhotoUrl().toString())), home.this, menu, getType());
-        //final MenuBrawable menuBrawable = new MenuBrawable(BitmapFactory.decodeResource(getResources(), R.mipmap.bitmap), OfoMenuActivity.this, menu);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            //menu.setBackground(menuBrawable);
-        }
-
-
+        loadProfilImage();
 
 
 
@@ -242,10 +284,9 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
             @Override
             public void onClick(View view) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    TransitionManager.beginDelayedTransition( layout_main);
+                    TransitionManager.beginDelayedTransition(layout_main);
                 }
                 viewPager.setVisibility(View.VISIBLE);
-                //mapboxMap.setPadding(0, viewPager.getHeight(), 0, 0);
             }
         });
 
@@ -255,7 +296,10 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         bt_loginOrorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(home.this, Drivesharedcard.class));
+                Intent intent = new Intent(home.this, Drivesharedcard.class);
+                intent.putExtra("PostID", publicationKey);
+                intent.putExtra("Publication", publicationToShow);
+                startActivity(intent);
             }
         });
 
@@ -356,6 +400,7 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         geoFire = new GeoFire(ref);
         geoQuery = this.geoFire.queryAtLocation(new GeoLocation(48.864716, 2.349014), 50);
         markers = new HashMap<String, Marker>();
+        markersExtra = new HashMap<String, share.SharePublication>();
         publicationRef = FirebaseDatabase.getInstance().getReference("publication");
 
 
@@ -363,10 +408,60 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
     }
 
 
+    public static Bitmap drawableToBitmap (Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable)drawable).getBitmap();
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
+    }
+
+    public static InputStream bitmapToInputStream(Bitmap bitmap) {
+        int size = bitmap.getHeight() * bitmap.getRowBytes();
+        ByteBuffer buffer = ByteBuffer.allocate(size);
+        bitmap.copyPixelsToBuffer(buffer);
+        return new ByteArrayInputStream(buffer.array());
+    }
+
+
+    private void loadProfilImage() {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    menuBrawable = new MenuBrawable(Picasso.with(home.this).load(currentUser.getPhotoUrl()).resize(100, 100).get(), home.this, menu, getType());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    menu.setBackground(menuBrawable);
+                }
+            }
+        });
+
+        thread.start();
+    }
+
+
     private void setUpPagerAdapter() {
         List<Integer> data = Arrays.asList(0, 1);
         travel_pager adapter = new travel_pager(data);
         viewPager.setAdapter(adapter);
+    }
+
+    private void UpdateCurrentPanel(share.SharePublication publication){
+
+        //tv_location_info.setText(publication);
+        //tv_date_info.setText();
+        tv_distance1.setText(publication.modele);
+        bike_info_board.setVisibility(View.VISIBLE);
+
     }
 
 
@@ -394,6 +489,15 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
     }
 
 
+    public Drawable loadImageFromURL(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "menu_icon");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 
     public void handleS90(View view){
@@ -469,15 +573,9 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
                 TransitionManager.beginDelayedTransition(layout_main);
             }
             viewPager.setVisibility(View.INVISIBLE);
-            mapboxMap.setPadding(0, 0, 0, 0);
             return;
         }if(bike_info_board.getVisibility() == View.VISIBLE){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                TransitionManager.beginDelayedTransition(layout_main);
-            }
-            mapboxMap.setPadding(0, 0, 0, 0);
             bike_info_board.setVisibility(View.GONE);
-
             return;
         }
 
@@ -498,17 +596,21 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         drawCircle(this.mapboxMap,  new LatLng(48.864716, 2.349014), Color.argb(66, 255, 0, 255), 8000);
         drawCircle(this.mapboxMap,  new LatLng(44.8378, -0.5792), Color.argb(66, 255, 0, 255), 8000);
         enableLocationPlugin(mapboxMap);
+
         mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(@NonNull Marker marker) {
-                Log.i("TAG", "seems like im getting some error" +" " + String.valueOf(marker));
                 //Toast.makeText(MapsActivity.this, marker.getTitle(), Toast.LENGTH_LONG).show();
                 //TODO
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    TransitionManager.beginDelayedTransition(layout_main);
-                }
-                mapboxMap.setPadding(0,0, 0,   bike_info_board.getHeight());
-                bike_info_board.setVisibility(View.VISIBLE);
+                //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                   // TransitionManager.beginDelayedTransition(main_loyout);
+               // }
+                publicationToShow = markersExtra.get(marker.getSnippet());
+                publicationKey = marker.getSnippet();
+                Log.i("TAG", publicationToShow.modele + " " + " " + publicationToShow.UserId);
+                UpdateCurrentPanel(publicationToShow);
+                //mapboxMap.setPadding(0,bike_info_board.getHeight(), 0,   0);
+                //bike_info_board.setVisibility(View.VISIBLE);
                 return true;
             }
         });
@@ -519,8 +621,12 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
     @SuppressLint("MissingPermission")
     public void onStart() {
         super.onStart();
-        this.geoQuery.addGeoQueryEventListener(this);
         mapView.onStart();
+        this.geoQuery.addGeoQueryEventListener(this);
+        if (locationLayerPlugin != null) {
+            locationLayerPlugin.onStart();
+        }
+
 
     }
 
@@ -541,12 +647,15 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
     public void onStop() {
         super.onStop();
         mapView.onStop();
-
         this.geoQuery.removeAllListeners();
         for (Marker marker: this.markers.values()) {
             marker.remove();
         }
         this.markers.clear();
+
+        if (locationLayerPlugin != null) {
+            locationLayerPlugin.onStop();
+        }
 
 
     }
@@ -567,6 +676,14 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         mapView.onDestroy();
 
     }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
 
 
     public static void drawCircle(MapboxMap map, LatLng position, int color, double radiusMeters) {
@@ -632,15 +749,31 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
 
     @Override
     public void onKeyEntered(String key, final GeoLocation location) {
-        Log.i("Myactivity", String.valueOf(key));
         DatabaseReference tempDataRef = FirebaseDatabase.getInstance().getReference("publication").child(key);
+        final DatabaseReference tempUserRef = FirebaseDatabase.getInstance().getReference("users");
         tempDataRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Icon icon = IconFactory.getInstance(home.this).fromBitmap(getMarkerBitmapFromView());
-                Log.i("TAG", String.valueOf(dataSnapshot.getValue()));
-                Marker marker = mapboxMap.addMarker(new MarkerOptions().position(new LatLng(location.latitude, location.longitude)).title("blabla").snippet(dataSnapshot.getKey().toString()).icon(icon));
-                markers.put(dataSnapshot.getKey(), marker);
+            public void onDataChange(final DataSnapshot publicationSnapshot) {
+                if(publicationSnapshot.getValue() != null){
+                    tempUserRef.child(publicationSnapshot.getValue(share.SharePublication.class).UserId).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            publication = publicationSnapshot.getValue(share.SharePublication.class);
+                            Icon icon = IconFactory.getInstance(home.this).fromBitmap(getMarkerBitmapFromView());
+                            User user = dataSnapshot.getValue(User.class);
+                            Marker marker = mapboxMap.addMarker(new MarkerOptions().position(new LatLng(location.latitude, location.longitude)).title("blabla").snippet(publicationSnapshot.getKey()).icon(icon));
+                            markers.put(publicationSnapshot.getKey(), marker);
+                            markersExtra.put(publicationSnapshot.getKey(), publication);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
+
 
             }
 
@@ -686,12 +819,12 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
 
     @Override
     public void onGeoQueryReady() {
-
+        Log.i("TAG", "i'm ready to deliver something");
     }
 
     @Override
     public void onGeoQueryError(DatabaseError error) {
-
+        Log.i("TAG", "i've an error" +  " "  + error.toString());
     }
 
 
@@ -710,4 +843,17 @@ public class home extends AppCompatActivity implements OnMapReadyCallback, GeoQu
         customMarkerView.draw(canvas);
         return returnedBitmap;
     }
+
+
+    private CountDownTimer countDownTimer = new CountDownTimer(60 * 60 * 1000, 1000) {
+        @Override
+        public void onTick(long l) {
+            Log.i("CountDown", l / 60000 + "分" + ((l / 1000) % 60) + "秒");
+        }
+
+        @Override
+        public void onFinish() {
+
+        }
+    };
 }

@@ -13,4 +13,19 @@
     <string name="facebook_app_id">2067520806828711</string>
     <string name="fb_login_protocol_scheme">fb2067520806828711</string>
 
+
+    <string name="add_card">Ajouter une carte</string>
+    <string name="progress_text">Sauvegarde en cours</string>
+    <string name="cvv_header">CVV</string>
+    <string name="cvv_desc">Un code à trois chiffres sur votre carte de crédit, que vous trouverez au verso de votre carte.</string>
+    <string name="exp_header">Date d\'expiration</string>
+    <string name="pin_header">Card Pin</string>
+    <string name="otp_header">OTP</string>
+    <string name="verification_error">Désolé, quelque chose s\'est mal passé.</string>
+    <string name="verification_details">Veuillez contacter votre banque pour plus de détails, ou essayez d\'ajouter une autre méthode de paiement.</string>
+    <string name="exp_details">Vous devriez pouvoir trouver cette date au recto de votre carte, sous votre numéro de carte.</string>
+    <string name="pin_details">You can\'t find this on the card. It is a 4 digit security pin to authorised card transactions.\nYou might have to contact your bank if you\'ve forgotten the pin</string>
+    <string name="otp_details">Un mot de passe de vérification unique envoyé par votre banque à votre numéro de téléphone mobile enregistré pour vérifier la transaction</string>
+    <string name="pantext">Numero de carte</string>
+    <string name="experitationHint">MM/AA</string>
 </resources>

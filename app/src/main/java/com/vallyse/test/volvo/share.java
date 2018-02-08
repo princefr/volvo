@@ -45,12 +45,14 @@ import com.savvi.rangedatepicker.CalendarPickerView;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -82,6 +84,7 @@ public class share extends AppCompatActivity {
     private String  carChoosed;
     private Boolean isChoosed = false;
     private TextView modeleChoosed;
+    private HashMap pictures = new HashMap();
 
 
     private LinearLayout moedelchoosing;
@@ -298,7 +301,7 @@ public class share extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     Intent intent =
-                            new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                            new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
                                     .build(share.this);
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
@@ -364,7 +367,7 @@ public class share extends AppCompatActivity {
     }
 
 
-    public static   class SharePublication {
+    public static  class SharePublication implements Serializable {
         public String date;
         public String modele;
         public String addresse;
@@ -452,12 +455,16 @@ public class share extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             if(IsThisImage == 0){
                 image.setImageBitmap(imageBitmap);
+                pictures.put(0, imageBitmap);
             }else if(IsThisImage == 1){
                 image2.setImageBitmap(imageBitmap);
+                pictures.put(1, imageBitmap);
             }else if(IsThisImage == 2){
                 image3.setImageBitmap(imageBitmap);
+                pictures.put(2, imageBitmap);
             }else{
                 image4.setImageBitmap(imageBitmap);
+                pictures.put(3, imageBitmap);
             }
 
         }else if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {

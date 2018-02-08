@@ -32,4 +32,16 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimary</item>
     </style>
 
+
+    <style name="LuhnStyle">
+        <item name="luhn_title">Ajouter une carte</item>
+        <item name="luhn_typeface">fonts/titillium.ttf</item>
+        <item name="luhn_show_toolbar_color">@color/colorPrimary</item>
+        <item name="luhn_show_pin">false</item>
+    </style>
+
+    <style name="ActionBarStyle.Transparent.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

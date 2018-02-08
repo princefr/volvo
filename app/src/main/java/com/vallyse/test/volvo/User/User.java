@@ -5,11 +5,13 @@ import android.net.Uri;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
+
 /**
  * Created by princejackes on 04/02/2018.
  */
 
-public  class User {
+public  class User implements Serializable {
     public String firstname;
     public String lastname;
     public String photoUrl;

@@ -42,8 +42,13 @@ import com.vallyse.test.volvo.User.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 
-public class Login extends AppCompatActivity {
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
+
+
+public class Login extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     private static final String TAG = "FacebookLogin";
     private LoginButton loginButton;
     // [START declare_auth]
@@ -67,6 +72,7 @@ public class Login extends AppCompatActivity {
     private String email;
 
     SweetAlertDialog pDialog;
+    private static final int REQUEST_CODE_QRCODE_PERMISSIONS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,6 +211,7 @@ public class Login extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        requestCodeQRCodePermissions();
 
     }
 
@@ -220,4 +227,21 @@ public class Login extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+
+    }
+
+    @AfterPermissionGranted(REQUEST_CODE_QRCODE_PERMISSIONS)
+    private void requestCodeQRCodePermissions() {
+        String[] perms = {android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.BLUETOOTH};
+        if (!EasyPermissions.hasPermissions(this, perms)) {
+            EasyPermissions.requestPermissions(this, "L'accès à ces fonctionnalités sont nécéssaires pour le bon fonctionnement de l'application", REQUEST_CODE_QRCODE_PERMISSIONS, perms);
+        }
+    }
 }

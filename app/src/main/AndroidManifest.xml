@@ -76,7 +76,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".retour_constructeur" />
-        <activity android:name=".Drivesharedcard"></activity>
+        <activity android:name=".Drivesharedcard" />
+        <activity android:name=".Paymentmethod" />
+        <activity android:name=".parametres" />
+        <activity android:name=".mes_informations" />
+        <activity android:name=".Adresse" />
+        <activity android:name=".verification_identite" />
+        <activity android:name=".preferences" />
+        <activity android:name=".apropos" />
+        <activity android:name=".conditions"></activity>
     </application>
 
 </manifest>
