@@ -82,6 +82,8 @@ dependencies {
 
     compile 'com.facebook.android:facebook-login:4.30.0'
     compile 'com.github.princefr:Luhn:-SNAPSHOT'
+    compile 'com.stripe:stripe-java:5.29.0'
+    compile 'com.github.andyxialm:SmoothCheckBox:4d4825562b'
 
 
 }

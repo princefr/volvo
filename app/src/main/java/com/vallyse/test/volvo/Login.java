@@ -37,6 +37,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
+import com.stripe.Stripe;
+import com.stripe.model.Customer;
 import com.vallyse.test.volvo.User.User;
 
 import org.json.JSONException;
@@ -84,6 +86,7 @@ public class Login extends AppCompatActivity implements EasyPermissions.Permissi
         mAuth = FirebaseAuth.getInstance();
         ref = FirebaseDatabase.getInstance().getReference();
 
+        Stripe.apiKey = "sk_test_ivrZh5kjN5EkHC5BYJF54qIS";
 
 
         // [START initialize_fblogin]

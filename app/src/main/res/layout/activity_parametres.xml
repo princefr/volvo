@@ -102,6 +102,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/mpreferences"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -124,6 +125,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/propos"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -147,6 +149,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/conditions"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"

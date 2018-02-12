@@ -12,6 +12,9 @@ public class parametres extends AppCompatActivity {
     private LinearLayout informations;
     private LinearLayout Adresses;
     private LinearLayout Verification;
+    private LinearLayout conditions;
+    private LinearLayout mpreferences;
+    private LinearLayout propos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,35 @@ public class parametres extends AppCompatActivity {
 
             }
         });
+
+
+        conditions = (LinearLayout) findViewById(R.id.conditions);
+        conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(parametres.this, conditions.class));
+            }
+        });
+
+
+        mpreferences = (LinearLayout) findViewById(R.id.mpreferences);
+        mpreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(parametres.this, preferences.class));
+            }
+        });
+
+
+        propos = (LinearLayout) findViewById(R.id.propos);
+        propos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(parametres.this, apropos.class));
+            }
+        });
+
+
     }
 
 
